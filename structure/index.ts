@@ -1,6 +1,5 @@
 import type {StructureResolver} from 'sanity/structure'
 import {CalendarIcon, UsersIcon, PinIcon, HomeIcon} from '@sanity/icons'
-import ArtistView from '../schemaTypes/components/VenueView'
 import VenueView from '../schemaTypes/components/VenueView'
 
 export const structure: StructureResolver = (S) =>
