@@ -25,29 +25,6 @@ export const structure: StructureResolver = (S) =>
           S.documentList().apiVersion('v2023-03-08').title('Past Events').filter('date < now()'),
         ),
       S.divider(),
-      // S.documentTypeListItem('venues')
-      //   .title('Venues')
-      //   .icon(UsersIcon)
-      //   .id('artists-list')
-      //   .child(
-      //     // Use a document list for artists
-      //     S.documentList()
-      //       .title('Artists')
-      //       .schemaType('artist')
-      //       .filter('_type == $type') // This filter ensures only 'artist' documents are listed
-      //       .params({type: 'artist'})
-      //       .child((documentId) =>
-      //         // Configure the default view and the custom ArtistView as additional views
-      //         S.document()
-      //           .documentId(documentId)
-      //           .schemaType('artist')
-      //           .id(`artist-${documentId}`)
-      //           .views([
-      //             S.view.form(), // This is the default editing form
-      //             S.view.component(ArtistView).title('Component'),
-      //           ]),
-      //       ),
-      //   ),
       S.documentTypeListItem('artist').title('Artists').icon(UsersIcon),
       S.listItem()
         .title('Venues')
