@@ -4,6 +4,7 @@ import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
 import {structure} from './structure'
 import {defaultDocumentNode} from './structure/defaultDocumentNode'
+import {media, mediaAssetSource} from 'sanity-plugin-media'
 
 export default defineConfig({
   name: 'default',
@@ -12,9 +13,17 @@ export default defineConfig({
   projectId: 'tt7a5wj5',
   dataset: 'production',
 
-  plugins: [structureTool({structure, defaultDocumentNode}), visionTool()],
+  plugins: [structureTool({structure, defaultDocumentNode}), visionTool(), media()],
 
   schema: {
     types: schemaTypes,
+  },
+  form: {
+    // Don't use this plugin when selecting files only (but allow all other enabled asset sources)
+    file: {
+      assetSources: (previousAssetSources) => {
+        return previousAssetSources.filter((assetSource) => assetSource !== mediaAssetSource)
+      },
+    },
   },
 })
