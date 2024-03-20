@@ -1,6 +1,7 @@
 import type {StructureResolver} from 'sanity/structure'
 import {CalendarIcon, UsersIcon, PinIcon, HomeIcon} from '@sanity/icons'
 import VenueView from '../schemaTypes/components/VenueView'
+import {Iframe} from 'sanity-plugin-iframe-pane'
 
 export const structure: StructureResolver = (S) =>
   S.list()
@@ -43,7 +44,15 @@ export const structure: StructureResolver = (S) =>
                 .id(`venue-${documentId}`)
                 .views([
                   S.view.form(),
-                  S.view.component(VenueView).title('Component'), // Assuming you have a VenueView component
+                  S.view.component(VenueView).title('Component'),
+                  S.view.component(Iframe).title('Iframe').options({
+                    url: 'https://www.google.com',
+                    // attributes: {
+                    //   allow: 'fullscreen', // string, optional
+                    //   referrerPolicy: 'strict-origin-when-cross-origin', // string, optional
+                    //   sandbox: 'allow-same-origin', // string, optional
+                    // },
+                  }),
                 ]),
             ),
         ),
